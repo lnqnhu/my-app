@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CustomerService } from '../services/customer'; 
 
 @Component({
@@ -12,17 +12,22 @@ export class GroupCustomersComponent implements OnInit {
   isLoading = true;
   loadError = false;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private customerService: CustomerService,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.customerService.getGroupedCustomers().subscribe({
       next: (data: any) => {
         this.customerGroups = Array.isArray(data) ? data : [];
         this.isLoading = false;
+        this.changeDetector.markForCheck();
       },
       error: () => {
         this.loadError = true;
         this.isLoading = false;
+        this.changeDetector.markForCheck();
       }
     });
   }
