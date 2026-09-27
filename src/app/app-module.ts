@@ -18,6 +18,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { ProductListCallHttpServiceComponent } from './product-list-call-http-service-component/product-list-call-http-service-component';
 import { ServiceProductImageEventComponent } from './service-product-image-event-component/service-product-image-event-component';
 import { ServiceProductImageEventDetailComponent } from './service-product-image-event-detail-component/service-product-image-event-detail-component';
+import { CatalogComponent } from './catalog-component/catalog-component';
+import { GroupCustomersComponent } from './group-customers-component/group-customers-component';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,16 @@ import { ServiceProductImageEventDetailComponent } from './service-product-image
     ProductDropdownListComponent,
     ProductListCallServiceComponent,
     ProductListCallHttpServiceComponent,
+    GroupCustomersComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule,ServiceProductImageEventComponent,ServiceProductImageEventDetailComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ServiceProductImageEventComponent,
+    ServiceProductImageEventDetailComponent,
+    CatalogComponent,
+  ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [App],
 })

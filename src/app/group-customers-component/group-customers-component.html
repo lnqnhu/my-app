@@ -1,0 +1,33 @@
+<p>group-customers-component works!</p>
+
+<p *ngIf="isLoading">Đang tải dữ liệu khách hàng...</p>
+<p *ngIf="loadError">Không tải được dữ liệu. Hãy kiểm tra file assets/data/customers.json.</p>
+<p *ngIf="!isLoading && !loadError && customerGroups.length === 0">Không có dữ liệu khách hàng.</p>
+
+<table border="1" cellpadding="5" style="border-collapse: collapse; text-align: left; width: 600px;">
+  <tr style="background-color: #f2f2f2;">
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>#</th>
+  </tr>
+
+  <ng-container *ngFor="let group of customerGroups">
+    
+    <tr style="background-color: #e0e0e0;">
+      <td colspan="5"><b>{{ group.CustomerTypeId }} - {{ group.CustomerTypeName || group.CustomterTypeName }}</b></td>
+    </tr>
+
+    <tr *ngFor="let cus of group.Customers || []">
+      <td>{{ cus.Id }}</td>
+      <td>{{ cus.Name }}</td>
+      <td>{{ cus.Email }}</td>
+      <td>{{ cus.Age }}</td>
+      <td>
+        <img *ngIf="cus.Image" [src]="cus.Image" width="80px" alt="Customer">
+      </td>
+    </tr>
+    
+  </ng-container>
+</table>

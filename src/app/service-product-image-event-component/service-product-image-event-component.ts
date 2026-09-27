@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProductEventService } from '../services/product-event'; // Chú ý import đúng service mới tạo
 
 @Component({
   selector: 'app-service-product-image-event',
+  imports: [CommonModule],
   templateUrl: './service-product-image-event-component.html',
   styleUrls: ['./service-product-image-event-component.css']
 })

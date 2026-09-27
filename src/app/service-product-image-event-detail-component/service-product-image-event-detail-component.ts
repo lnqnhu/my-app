@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductEventService } from '../services/product-event';
 
 @Component({
   selector: 'app-service-product-image-event-detail',
+  imports: [CommonModule],
   templateUrl: './service-product-image-event-detail-component.html',
   styleUrls: ['./service-product-image-event-detail-component.css']
 })
